@@ -11,7 +11,12 @@ Pod::Spec.new do |s|
   s.author         = { package_json["author"] => package_json["author"] }
   s.platform       = :ios, "9.0"
   s.source         = { :git => "#{package_json["repository"]["url"]}.git", :tag => "#{s.version}" }
-  s.source_files   = 'ios/Piwik/**/*.{h,m}'
+
+  s.source_files   = 'ios/BNFPiwik/*.{h,m}'
   s.dependency 'React'
+
+  s.subspec "PiwikTracker" do |ss|
+      ss.source_files = "ios/PiwikTracker/**/*.{h,m}"
+  end
 
 end
