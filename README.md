@@ -20,6 +20,13 @@ Integrating Matomo into your React Native app
 
 #### iOS
 
+*With CocoaPods*
+
+1. add ``pod ‘react-native-piwik’, :path => ‘../node_modules/react-native-piwik’`` to your ios/Podfile
+2. run ``pod install`` 
+
+*Manually*
+
 1.  Add `node_modules/react-native-matomo/ios/BNFPiwik.xcodeproj` to your xcode project, usually under the `Libraries` group
 2.  Add `libBNFPiwik.a` (from `Products` under `BNFPiwik.xcodeproj`) to build target's `Linked Frameworks and Libraries` list
 3.  Drag `node_modules/react-native-matomo/ios/PiwikTracker/piwiktracker.xcdatamodeld` into the folder containing `AppDelegate.m`
