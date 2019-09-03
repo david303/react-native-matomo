@@ -27,10 +27,10 @@ Integrating Matomo into your React Native app
 
 *Manually*
 
-1.  Add `node_modules/react-native-matomo/ios/BNFPiwik.xcodeproj` to your xcode project, usually under the `Libraries` group
-2.  Add `libBNFPiwik.a` (from `Products` under `BNFPiwik.xcodeproj`) to build target's `Linked Frameworks and Libraries` list
-3.  Drag `node_modules/react-native-matomo/ios/PiwikTracker/piwiktracker.xcdatamodeld` into the folder containing `AppDelegate.m`
-4.  Delete `piwiktracker.xcdatamodeld`(from `Libraries` under `BNFPiwik.xcodeproj/PiwikTracker`)
+1.  Add `node_modules/react-native-matomo/ios/BNFMatomo.xcodeproj` to your xcode project, usually under the `Libraries` group
+2.  Add `libBNFMatomo.a` (from `Products` under `BNFMatomo.xcodeproj`) to build target's `Linked Frameworks and Libraries` and `Target Dependencies` lists
+3. If the MatomoTracker is the first Swift library in your project you need to add a random .swift file to your project
+4. In your main target set the Swift version to 4.2
 
 #### Android
 
