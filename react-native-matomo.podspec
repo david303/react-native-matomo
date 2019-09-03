@@ -3,21 +3,20 @@ package_json = JSON.parse(File.read('package.json'))
 
 Pod::Spec.new do |s|
 
-  s.name           = "react-native-piwik"
+  s.name           = "react-native-matomo"
   s.version        = package_json["version"]
   s.summary        = package_json["description"]
-  s.homepage       = "https://github.com/breakthrough-health/react-native-matomo"
+  s.homepage       = "https://github.com/BonifyByForteil/react-native-matomo"
   s.license        = package_json["license"]
   s.author         = { package_json["author"] => package_json["author"] }
   s.platform       = :ios, "9.0"
   s.source         = { :git => "#{package_json["repository"]["url"]}.git", :tag => "#{s.version}" }
-  s.source_files   = 'ios/PiwikTracker/*.{h,m}'
-  s.resources = 'ios/PiwikTracker/piwiktracker.xcdatamodeld'
+  s.source_files   = 'ios/MatomoTracker/*.swift'
   s.dependency 'React'
 
 
-  s.subspec "BNFPiwik" do |ss|
-      ss.source_files = "ios/BNFPiwik/**/*.{h,m}"
+  s.subspec "BNFMatomo" do |ss|
+      ss.source_files = "ios/BNFMatomo/**/*.{h,m}"
   end
 
 end
