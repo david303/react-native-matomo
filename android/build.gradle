@@ -16,6 +16,6 @@ android {
 }
 
 dependencies {
-    compile "com.facebook.react:react-native:+"
-    compile 'org.piwik.sdk:piwik-sdk:1.0.2'
+    implementation "com.facebook.react:react-native:+"
+    implementation 'org.matomo.sdk:tracker:4.0.1'
 }

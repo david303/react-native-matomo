@@ -1,25 +1,26 @@
 {
-  "name": "react-native-piwik",
-  "version": "0.0.8",
-  "description": "React Native adapter for Piwik native SDKs",
+  "name": "react-native-matomo",
+  "version": "0.1.1",
+  "description": "React Native adapter for Matomo native SDKs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BonifyByForteil/react-native-piwik.git"
+    "url": "git+https://github.com/BonifyByForteil/react-native-matomo.git"
   },
   "keywords": [
     "react-native",
+    "matomo",
     "piwik",
     "android",
     "ios"
   ],
-  "author": "Rui Araujo",
+  "author": "Bonify",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BonifyByForteil/react-native-piwik/issues"
+    "url": "https://github.com/BonifyByForteil/react-native-matomo/issues"
   },
-  "homepage": "https://github.com/BonifyByForteil/react-native-piwik#readme"
+  "homepage": "https://github.com/BonifyByForteil/react-native-matomo#readme"
 }
