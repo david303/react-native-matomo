@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.author         = { package_json["author"] => package_json["author"] }
   s.platform       = :ios, "9.0"
   s.source         = { :git => "#{package_json["repository"]["url"]}.git", :tag => "#{s.version}" }
-  s.source_files   = 'ios/MatomoTracker/**/*.swift'
+  s.source_files   = 'ios/MatomoTracker/**/*.{h,swift}'
   s.swift_version  = '4.2'
   s.dependency 'React'
 
