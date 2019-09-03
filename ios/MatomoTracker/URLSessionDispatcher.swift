@@ -1,8 +1,7 @@
 import Foundation
+import WebKit
 
-#if os(OSX)
-    import WebKit
-#elseif os(iOS)
+#if os(iOS)
     import UIKit
 #endif
 
@@ -24,32 +23,43 @@ final class URLSessionDispatcher: Dispatcher {
         self.baseURL = baseURL
         self.timeout = 5
         self.session = URLSession.shared
-        DispatchQueue.main.async {
-            self.userAgent = userAgent ?? URLSessionDispatcher.defaultUserAgent()
+        self.userAgent = userAgent
+        
+        if (userAgent == nil) {
+            URLSessionDispatcher.getDefaultUserAgent(completion: {(defaultUserAgent: String) in
+                self.userAgent = defaultUserAgent.appending(" MatomoTracker SDK URLSessionDispatcher")
+            })
         }
     }
     
-    private static func defaultUserAgent() -> String {
-        assertMainThread()
-        #if os(OSX)
-            let webView = WebView(frame: .zero)
-            let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
-        #elseif os(iOS)
-            let webView = UIWebView(frame: .zero)
-            var currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
-            if let regex = try? NSRegularExpression(pattern: "\\((iPad|iPhone);", options: .caseInsensitive) {
-                let deviceModel = Device.makeCurrentDevice().platform
-                currentUserAgent = regex.stringByReplacingMatches(
-                    in: currentUserAgent,
-                    options: .withTransparentBounds,
-                    range: NSRange(location: 0, length: currentUserAgent.count),
-                    withTemplate: "(\(deviceModel);"
-                )
-            }
-        #elseif os(tvOS)
-            let currentUserAgent = ""
-        #endif
-        return currentUserAgent.appending(" MatomoTracker SDK URLSessionDispatcher")
+    private static func getDefaultUserAgent(completion: @escaping (_ defaultUserAgent: String) -> Void) -> Void {
+        DispatchQueue.main.async {
+            #if os(OSX)
+                let webView = WebView(frame: .zero)
+                let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
+                completion(currentUserAgent)
+            #elseif os(iOS)
+                let wkWebView = WKWebView(frame: .zero)
+                wkWebView.evaluateJavaScript("navigator.userAgent", completionHandler: { (response: Any?, error: Error?) in
+                    if let currentUserAgent = response as? String {
+                        if let regex = try? NSRegularExpression(pattern: "\\((iPad|iPhone);", options: .caseInsensitive) {
+                            let deviceModel = Device.makeCurrentDevice().platform
+                            completion(regex.stringByReplacingMatches(
+                                in: currentUserAgent,
+                                options: .withTransparentBounds,
+                                range: NSRange(location: 0, length: currentUserAgent.count),
+                                withTemplate: "(\(deviceModel);"
+                            ))
+                        }
+
+                    } else {
+                        completion("")
+                    }
+                })
+            #elseif os(tvOS)
+                completion("")
+            #endif
+        }
     }
     
     func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
