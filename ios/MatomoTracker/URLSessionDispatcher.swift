@@ -19,47 +19,50 @@ final class URLSessionDispatcher: Dispatcher {
     /// - Parameters:
     ///   - baseURL: The url of the Matomo server. This url has to end in `piwik.php`.
     ///   - userAgent: An optional parameter for custom user agent.
-    init(baseURL: URL, userAgent: String? = nil) {                
+    init(baseURL: URL, userAgent: String? = nil) {
         self.baseURL = baseURL
         self.timeout = 5
         self.session = URLSession.shared
         self.userAgent = userAgent
         
         if (userAgent == nil) {
-            URLSessionDispatcher.getDefaultUserAgent(completion: {(defaultUserAgent: String) in
-                self.userAgent = defaultUserAgent.appending(" MatomoTracker SDK URLSessionDispatcher")
-            })
+            DispatchQueue.main.async {
+                URLSessionDispatcher.getDefaultUserAgent(completion: {(defaultUserAgent: String) in
+                    self.userAgent = defaultUserAgent.appending(" MatomoTracker SDK URLSessionDispatcher")
+                })
+            }
         }
     }
     
     private static func getDefaultUserAgent(completion: @escaping (_ defaultUserAgent: String) -> Void) -> Void {
-        DispatchQueue.main.async {
-            #if os(OSX)
-                let webView = WebView(frame: .zero)
-                let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "navigator.userAgent") ?? ""
-                completion(currentUserAgent)
-            #elseif os(iOS)
-                let wkWebView = WKWebView(frame: .zero)
-                wkWebView.evaluateJavaScript("navigator.userAgent", completionHandler: { (response: Any?, error: Error?) in
-                    if let currentUserAgent = response as? String {
-                        if let regex = try? NSRegularExpression(pattern: "\\((iPad|iPhone);", options: .caseInsensitive) {
-                            let deviceModel = Device.makeCurrentDevice().platform
-                            completion(regex.stringByReplacingMatches(
-                                in: currentUserAgent,
-                                options: .withTransparentBounds,
-                                range: NSRange(location: 0, length: currentUserAgent.count),
-                                withTemplate: "(\(deviceModel);"
-                            ))
-                        }
-
+        assertMainThread()
+        #if os(OSX)
+            let webView = WebView(frame: .zero)
+            let currentUserAgent = webView.stringByEvaluatingJavaScript(from: "Date.now()") ?? ""
+            completion(currentUserAgent)
+        #elseif os(iOS)
+            var wkWebView: WKWebView? = WKWebView(frame: .zero)
+            wkWebView!.evaluateJavaScript("navigator.userAgent") { (response, error) -> Void in
+                if let currentUserAgent = response as? String {
+                    if let regex = try? NSRegularExpression(pattern: "\\((iPad|iPhone);", options: .caseInsensitive) {
+                        let deviceModel = Device.makeCurrentDevice().platform
+                        completion(regex.stringByReplacingMatches(
+                            in: currentUserAgent,
+                            options: .withTransparentBounds,
+                            range: NSRange(location: 0, length: currentUserAgent.count),
+                            withTemplate: "(\(deviceModel);"
+                        ))
                     } else {
                         completion("")
                     }
-                })
-            #elseif os(tvOS)
-                completion("")
-            #endif
-        }
+                } else {
+                    completion("")
+                }
+                wkWebView = nil
+            }
+        #elseif os(tvOS)
+            completion("")
+        #endif
     }
     
     func send(events: [Event], success: @escaping ()->(), failure: @escaping (_ error: Error)->()) {
