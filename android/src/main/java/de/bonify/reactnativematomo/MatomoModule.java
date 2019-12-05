@@ -138,7 +138,18 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
 
     @ReactMethod
     public void trackSearch(@NonNull String query, @NonNull ReadableMap values) {
-        throw new RuntimeException("Not implemented yet");
+        if (mMatomoTracker == null) {
+            throw new RuntimeException("Tracker must be initialized before usage");
+        }
+        String category = null;
+        int resultCount = 0;
+        if (values.hasKey("category") && !values.isNull("category")) {
+            category = values.getString("category");
+        }
+        if (values.hasKey("resultCount") && !values.isNull("resultCount")) {
+            resultCount = values.getInt("resultCount");
+        }
+        getTrackHelper().search(query).category(category).count(resultCount).with(mMatomoTracker);
     }
 
     @ReactMethod
