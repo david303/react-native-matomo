@@ -1,4 +1,9 @@
 # Matomo SDK for React Native
+[![npm (scoped)](https://img.shields.io/npm/v/@milkinteractive/react-native-matomo)](https://www.npmjs.com/package/@milkinteractive/react-native-matomo)
+
+`npm add @milkinteractive/react-native-matomo`
+
+*Note:* This package is a fork of [react-native-matomo](https://github.com/BonifyByForteil/react-native-matomo).
 
 This document describes how to get started using the Matomo Tracking SDK for React Native.
 [Matomo](https://matomo.org/) is the leading open source web analytics platform
@@ -118,7 +123,7 @@ Matomo.trackAppDownload();
 ## Contribute
 
 - Fork the project
-- Create a feature branch based on the 'master' branch
+- Create a feature branch based on the 'develop' branch
 - Create a PR and feel proud.
 
 ## License
