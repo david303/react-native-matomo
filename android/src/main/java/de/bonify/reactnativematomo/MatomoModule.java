@@ -70,6 +70,9 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
 
     @ReactMethod
     public void trackScreen(@NonNull String screen, String title) {
+        if (mMatomoTracker == null) {
+            throw new RuntimeException("Tracker must be initialized before usage");
+        }
         getTrackHelper().screen(screen).title(title).with(mMatomoTracker);
     }
 
