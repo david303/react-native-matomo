@@ -75,6 +75,9 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
 
     @ReactMethod
     public void trackEvent(@NonNull String category, @NonNull String action, ReadableMap values) {
+        if (mMatomoTracker == null) {
+            throw new RuntimeException("Tracker must be initialized before usage");
+        }
         String name = null;
         Float value = null;
         if (values.hasKey("name") && !values.isNull("name")) {
@@ -88,6 +91,9 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
 
     @ReactMethod
     public void trackGoal(int goalId, ReadableMap values) {
+        if (mMatomoTracker == null) {
+            throw new RuntimeException("Tracker must be initialized before usage");
+        }
         Float revenue = null;
         if (values.hasKey("revenue") && !values.isNull("revenue")) {
             revenue = (float)values.getDouble("revenue");
@@ -154,6 +160,9 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
 
     @ReactMethod
     public void trackAppDownload() {
+        if (mMatomoTracker == null) {
+            throw new RuntimeException("Tracker must be initialized before usage");
+        }
         getTrackHelper().track().download().with(mMatomoTracker);
     }
 
