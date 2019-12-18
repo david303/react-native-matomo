@@ -103,7 +103,10 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
 
     @ReactMethod
     public void trackCampaign(String name, String keyboard) {
-        throw new RuntimeException("Not implemented yet");
+        if (mMatomoTracker == null) {
+            throw new RuntimeException("Tracker must be initialized before usage");
+        }
+        getTrackHelper().campaign(name, keyboard);
     }
 
     @ReactMethod
