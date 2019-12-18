@@ -1,6 +1,8 @@
 var Matomo = require('react-native').NativeModules.Matomo;
 module.exports = {
-  initTracker: Matomo.initTracker,
+  initTracker: function(url, siteId, dimension) {
+    Matomo.initTracker(url, siteId, dimension)
+  },
   setUserId: function(userId) {
     if (userId !== null && userId !== userId !== undefined) {
       Matomo.setUserId(userId + '');
@@ -30,5 +32,8 @@ module.exports = {
   },
   trackSearch: function(query, category, resultCount, url) {
     Matomo.trackSearch(query, {category, resultCount, url});
+  },
+  setAppOptOut: function(optOut) {
+    Matomo.setAppOptOut(optOut);
   }
 };
