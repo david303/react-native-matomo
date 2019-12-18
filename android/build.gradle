@@ -1,12 +1,16 @@
+def safeExtGet(prop, fallback) {
+    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
+
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion safeExtGet('compileSdkVersion', 29)
+    buildToolsVersion safeExtGet('buildToolsVersion', '29.0.0')
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion safeExtGet('minSdkVersion', 16)
+        targetSdkVersion safeExtGet('targetSdkVersion', 29)
         versionCode 1
         versionName "1.0"
         ndk {
@@ -17,5 +21,5 @@ android {
 
 dependencies {
     implementation "com.facebook.react:react-native:+"
-    implementation 'org.matomo.sdk:tracker:4.0.1'
+    implementation 'org.matomo.sdk:tracker:4.1.1'
 }
