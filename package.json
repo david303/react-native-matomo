@@ -1,5 +1,5 @@
 {
-  "name": "react-native-matomo",
+  "name": "@milkinteractive/react-native-matomo",
   "version": "0.2.0",
   "description": "React Native adapter for Matomo native SDKs",
   "main": "index.js",
