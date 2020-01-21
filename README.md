@@ -1,7 +1,7 @@
 # Matomo SDK for React Native
 [![npm (scoped)](https://img.shields.io/npm/v/@milkinteractive/react-native-matomo)](https://www.npmjs.com/package/@milkinteractive/react-native-matomo)
 
-`npm add @milkinteractive/react-native-matomo`
+`npm install --save @milkinteractive/react-native-matomo`
 
 *Note:* This package is a fork of [react-native-matomo](https://github.com/BonifyByForteil/react-native-matomo).
 
@@ -42,7 +42,7 @@ project(':react-native-matomo').projectDir = new File(rootProject.projectDir, '.
 - Add the following under `dependencies`:
 
 ```
-compile project(':react-native-matomo')
+implementation project(':react-native-matomo')
 ```
 
 - Open your `MainApplication.java` file under `android/src`
