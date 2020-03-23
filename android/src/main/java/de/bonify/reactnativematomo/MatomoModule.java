@@ -9,8 +9,8 @@ import org.matomo.sdk.Matomo;
 import org.matomo.sdk.Tracker;
 import org.matomo.sdk.TrackerBuilder;
 import org.matomo.sdk.extra.TrackHelper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import javax.annotation.Nonnull;
+import androidx.annotation.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,7 +49,7 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
     }
 
     @ReactMethod
-    public void setCustomDimension(@NonNull int id, @Nullable String value){
+    public void setCustomDimension(@Nonnull int id, @Nullable String value){
         if(value == null || value.length() == 0) {
             customDimensions.remove(id);
             return;
@@ -69,7 +69,7 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
     }
 
     @ReactMethod
-    public void trackScreen(@NonNull String screen, String title) {
+    public void trackScreen(@Nonnull String screen, String title) {
         if (mMatomoTracker == null) {
             throw new RuntimeException("Tracker must be initialized before usage");
         }
@@ -77,7 +77,7 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
     }
 
     @ReactMethod
-    public void trackEvent(@NonNull String category, @NonNull String action, ReadableMap values) {
+    public void trackEvent(@Nonnull String category, @Nonnull String action, ReadableMap values) {
         if (mMatomoTracker == null) {
             throw new RuntimeException("Tracker must be initialized before usage");
         }
@@ -105,7 +105,7 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
     }
 
     @ReactMethod
-    public void trackContentImpression(@NonNull String name, @NonNull ReadableMap values) {
+    public void trackContentImpression(@Nonnull String name, @Nonnull ReadableMap values) {
         if (mMatomoTracker == null) {
             throw new RuntimeException("Tracker must be initialized before usage");
         }
@@ -121,7 +121,7 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
     }
 
     @ReactMethod
-    public void trackContentInteraction(@NonNull String name, @NonNull ReadableMap values) {
+    public void trackContentInteraction(@Nonnull String name, @Nonnull ReadableMap values) {
         if (mMatomoTracker == null) {
             throw new RuntimeException("Tracker must be initialized before usage");
         }
@@ -141,7 +141,7 @@ public class MatomoModule extends ReactContextBaseJavaModule implements Lifecycl
     }
 
     @ReactMethod
-    public void trackSearch(@NonNull String query, @NonNull ReadableMap values) {
+    public void trackSearch(@Nonnull String query, @Nonnull ReadableMap values) {
         if (mMatomoTracker == null) {
             throw new RuntimeException("Tracker must be initialized before usage");
         }
