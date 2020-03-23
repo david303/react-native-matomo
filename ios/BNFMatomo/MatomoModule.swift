@@ -3,6 +3,11 @@ import MatomoTracker
 @objc(Matomo)
 class Matomo: NSObject {
     
+    @objc public func requiresMainQueueSetup() -> Bool
+    {
+      return false;
+    }
+    
     var tracker: MatomoTracker!
     
     @objc public func initTracker(_ url:String, id:NSNumber, dimension:String) {
