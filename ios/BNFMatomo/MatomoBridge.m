@@ -2,6 +2,10 @@
 
 @interface RCT_EXTERN_MODULE(Matomo, NSObject)
 
++(BOOL)requiresMainQueueSetup {
+    return YES;
+}
+
 RCT_EXTERN_METHOD(initTracker:(NSString*)url id:(NSNumber* _Nonnull) id dimension:(NSString* _Nullable) dimension);
 RCT_EXTERN_METHOD(setUserId:(NSString* _Nonnull)userID);
 RCT_EXTERN_METHOD(setCustomDimension: (NSNumber* _Nonnull)index value: (NSString* _Nullable)value);
