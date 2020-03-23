@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		83CB8A6423A9273E008C6410 /* MatomoReactNativeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CB8A6323A9273E008C6410 /* MatomoReactNativeModule.swift */; };
+		83C0D2172428AF1F0073447D /* MatomoBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C0D2152428AF1F0073447D /* MatomoBridge.m */; };
+		83C0D2182428AF1F0073447D /* MatomoModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C0D2162428AF1F0073447D /* MatomoModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,9 +24,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		83CB8A6123A92013008C6410 /* MRNModuleObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRNModuleObjC.m; sourceTree = "<group>"; };
+		83C0D2152428AF1F0073447D /* MatomoBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatomoBridge.m; sourceTree = "<group>"; };
+		83C0D2162428AF1F0073447D /* MatomoModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatomoModule.swift; sourceTree = "<group>"; };
 		83CB8A6223A9273E008C6410 /* BNFMatomo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BNFMatomo-Bridging-Header.h"; sourceTree = "<group>"; };
-		83CB8A6323A9273E008C6410 /* MatomoReactNativeModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatomoReactNativeModule.swift; sourceTree = "<group>"; };
 		9A01249E21B5AF5E004E207B /* libBNFMatomo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBNFMatomo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -59,9 +60,9 @@
 		9A0124A021B5AF5E004E207B /* BNFMatomo */ = {
 			isa = PBXGroup;
 			children = (
+				83C0D2152428AF1F0073447D /* MatomoBridge.m */,
+				83C0D2162428AF1F0073447D /* MatomoModule.swift */,
 				83CB8A6223A9273E008C6410 /* BNFMatomo-Bridging-Header.h */,
-				83CB8A6123A92013008C6410 /* MRNModuleObjC.m */,
-				83CB8A6323A9273E008C6410 /* MatomoReactNativeModule.swift */,
 			);
 			path = BNFMatomo;
 			sourceTree = "<group>";
@@ -123,7 +124,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83CB8A6423A9273E008C6410 /* MatomoReactNativeModule.swift in Sources */,
+				83C0D2182428AF1F0073447D /* MatomoModule.swift in Sources */,
+				83C0D2172428AF1F0073447D /* MatomoBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
