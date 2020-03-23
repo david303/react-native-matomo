@@ -3,9 +3,9 @@ import MatomoTracker
 @objc(Matomo)
 class Matomo: NSObject {
     
-    @objc public func requiresMainQueueSetup() -> Bool
+    @objc static func requiresMainQueueSetup() -> Bool
     {
-      return false;
+      return false
     }
     
     var tracker: MatomoTracker!
