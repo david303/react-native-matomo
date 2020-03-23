@@ -54,12 +54,6 @@ class Matomo: NSObject {
         }
     }
     
-    @objc public func trackCampaign(_ name:String, keyboard: String) {
-        if (tracker != nil) {
-            tracker.trackCampaign(name: name, keyword: keyboard)
-        }
-    }
-    
     @objc public func trackContentImpression(_ name:String, values: NSDictionary) {
         if (tracker != nil) {
             let piece = values.object(forKey: "piece") as? String
