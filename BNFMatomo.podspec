@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.source_files   = 'ios/**/*.{h,m,swift}'
   s.swift_version  = '4.2'
   s.dependency 'React'
-  s.dependency 'MatomoTracker'
+  s.dependency 'MatomoTracker', :git => 'https://github.com/milkinteractive/matomo-sdk-ios.git', :tag => 'v7.2.0-2'
 
 end
