@@ -1,7 +1,7 @@
 # Matomo SDK for React Native
-[![npm (scoped)](https://img.shields.io/npm/v/@milkinteractive/react-native-matomo)](https://www.npmjs.com/package/@milkinteractive/react-native-matomo)
+[![npm (scoped)](https://img.shields.io/npm/v/@valleyelectronics/react-native-matomo)](https://www.npmjs.com/package/@valleyelectronics/react-native-matomo)
 
-`npm install --save @milkinteractive/react-native-matomo`
+`npm install --save @valleyelectronics/react-native-matomo`
 
 *Note:* This package is a fork of [react-native-matomo](https://github.com/BonifyByForteil/react-native-matomo).
 

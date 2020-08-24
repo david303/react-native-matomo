@@ -1,5 +1,5 @@
 {
-  "name": "@milkinteractive/react-native-matomo",
+  "name": "@valleyelectronics/react-native-matomo",
   "version": "0.2.5",
   "description": "React Native adapter for Matomo native SDKs",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/milkinteractive/react-native-matomo.git"
+    "url": "git+https://github.com/valleyelectronics/react-native-matomo.git"
   },
   "keywords": [
     "react-native",
@@ -22,7 +22,7 @@
   "author": "chreck",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/milkinteractive/react-native-matomo/issues"
+    "url": "https://github.com/valleyelectronics/react-native-matomo/issues"
   },
-  "homepage": "https://github.com/milkinteractive/react-native-matomo#readme"
+  "homepage": "https://github.com/valleyelectronics/react-native-matomo#readme"
 }
