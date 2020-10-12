@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.source_files   = 'ios/**/*.{h,m,swift}'
   s.swift_version  = '4.2'
   s.dependency 'React'
-  s.dependency 'MatomoTrackerValley'
+  s.dependency 'matomo-ios'
 
 end
