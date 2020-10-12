@@ -1,6 +1,6 @@
 {
   "name": "@valleyelectronics/react-native-matomo",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "React Native adapter for Matomo native SDKs",
   "main": "index.js",
   "scripts": {
