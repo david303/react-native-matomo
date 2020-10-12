@@ -25,8 +25,11 @@ Integrating Matomo into your React Native app
 
 #### iOS
 
-1. add ``pod ‘react-native-matomo, :path => ‘../node_modules/react-native-matomo`` to your ios/Podfile
-2. run ``pod install``
+Beneath ``use_native_modules!``
+
+1. add ``pod 'matomo-ios', :path => '../node_modules/matomo-ios'`` to your ios/Podfile
+2. add ``pod 'BNFMatomo', :path => '../node_modules/@milkinteractive/react-native-matomo'`` to your ios/Podfile
+3. run ``pod install``
 
 #### Android
 
