@@ -1,13 +1,13 @@
 {
   "name": "@valleyelectronics/react-native-matomo",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "React Native adapter for Matomo native SDKs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@vvalleyelectronics/matomo-ios": "^7.2.3"
+    "@valleyelectronics/matomo-ios": "^7.2.3"
   },
   "repository": {
     "type": "git",
